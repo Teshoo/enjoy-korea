@@ -1,3 +1,128 @@
 body {
-    background-color: lightgray;
+    background-color: #344356;
+    color: #FFFFFF;
+    font-family: 'Leelawadee UI', "Trebuchet MS", Verdana, sans-serif;
+}
+
+button{
+    border: none;
+    padding: 0 0;
+    background-color: hsla(0, 100%, 100%, 0);
+    cursor: pointer;
+}
+
+.logo {
+    position: absolute;
+    width: 320px;
+    height: 200px;
+    left: calc(50% - 400px/2 - 495px);
+    top: 80px;
+}
+
+.header_homepage {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0;
+
+    position: absolute;
+    width: 980px;
+    height: 254px;
+    left: calc(50% - 980px/2 + 165px);
+    top: 320px;
+}
+
+.menu_homepage {
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 25px 20px;
+    gap: 30px;
+    text-align: left;
+
+    width: 320px;
+    height: 254px;
+
+    /* blue_grey */
+
+    background: #6583A8;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+
+.menu_homepage:hover {
+    background: #516e93;
+}
+
+.menu_title {
+
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 27px;
+    align-items: center;
+    text-align: center;
+
+    color: #FFFFFF;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.menu_description {
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 30px;
+    align-items: center;
+
+    color: #FFFFFF;
+}
+
+.favorite_homepage {
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    gap: 30px;
+
+    width: 210px;
+    height: 80px;
+
+    /* grey */
+
+    background: #6B7B8E;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+}
+
+.favorite_title {
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 27px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #FFFFFF;
 }
