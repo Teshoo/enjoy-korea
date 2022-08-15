@@ -6,11 +6,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class enjoyKorea extends AbstractController
+class eventKoreaController extends AbstractController
 {
-    #[Route('/', name: 'app_enjoyKorea')]
-    public function homepage(): Response
+    #[Route('/what_to_do_tonight', name: 'app_eventKorea')]
+    public function event(): Response
     {
-        return $this->render('header/homepage.html.twig');
+        return $this->render('event/content.html.twig');
     }
 }

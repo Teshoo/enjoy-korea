@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block header_menu %}
+    <div>
+        <a class="menu_a" href="{{ path('app_enjoyKorea') }}">
+            <img class="logo" src="{{ asset('visitkorea_logo_white 1.svg') }}" alt="visit korea logo">
+        </a>
+    </div>
+    <div class="header_homepage">
+        <a class="menu_a" href="{{ path('app_eventKorea') }}">
+            <div class="menu_homepage">
+                <div class="menu_homepage_title">
+                    What to do tonight?
+                </div>
+                <div class="menu_homepage_description">
+                    <p>
+                        Find something around this evening:
+                    </p>
+                    <p>
+                        - Concert<br>
+                        - Walk<br>
+                        - Cinema
+                    </p>
+                </div>
+            </div>
+        </a>
+        <a class="menu_a" href="{{ path('app_hobbyKorea') }}">
+            <div class="menu_homepage">
+                <div class="menu_homepage_title">
+                    Practice your hobbies
+                </div>
+                <div class="menu_homepage_description">
+                    <p>
+                        Find a hobby in your area:
+                    </p>
+                    <p>
+                        - Do sport<br>
+                        - Practice musique<br>
+                        - Take dance lessons
+                    </p>
+                </div>
+            </div>
+        </a>
+        <a class="menu_a" href="#">
+            <div class="favorite">
+                <div class="favorite_title">
+                    Favorites
+                </div>
+            </div>
+        </a>
+    </div>
+{% endblock %}

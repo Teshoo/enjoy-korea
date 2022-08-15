@@ -4,11 +4,8 @@ body {
     font-family: 'Leelawadee UI', "Trebuchet MS", Verdana, sans-serif;
 }
 
-button{
-    border: none;
-    padding: 0 0;
-    background-color: hsla(0, 100%, 100%, 0);
-    cursor: pointer;
+.menu_a{
+    text-decoration: none;
 }
 
 .logo {
@@ -20,6 +17,8 @@ button{
 }
 
 .header_homepage {
+    /* Auto layout */
+
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -31,6 +30,23 @@ button{
     height: 254px;
     left: calc(50% - 980px/2 + 165px);
     top: 320px;
+}
+
+.header_default {
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 100px;
+
+    position: absolute;
+    width: 980px;
+    height: 80px;
+    left: calc(50% - 980px/2 + 165px);
+    top: 150px;
 }
 
 .menu_homepage {
@@ -54,11 +70,35 @@ button{
     border-radius: 10px;
 }
 
+.menu_default {
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 30px;
+
+    width: 210px;
+    height: 80px;
+
+    /* blue_grey */
+
+    background: #6583A8;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+
 .menu_homepage:hover {
     background: #516e93;
 }
 
-.menu_title {
+.menu_default:hover {
+    background: #516e93;
+}
+
+.menu_homepage_title {
 
     font-weight: 700;
     font-size: 20px;
@@ -77,7 +117,27 @@ button{
     flex-grow: 0;
 }
 
-.menu_description {
+.menu_default_title {
+
+    font-family: 'Leelawadee UI', "Trebuchet MS", Verdana, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 27px;
+    align-items: center;
+    text-align: center;
+
+    color: #FFFFFF;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.menu_homepage_description {
 
     font-style: normal;
     font-weight: 400;
@@ -88,7 +148,7 @@ button{
     color: #FFFFFF;
 }
 
-.favorite_homepage {
+.favorite {
     /* Auto layout */
 
     display: flex;
