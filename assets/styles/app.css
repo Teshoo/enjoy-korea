@@ -186,3 +186,23 @@ body {
 
     color: #FFFFFF;
 }
+
+.header_hobbies {
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+
+    position: absolute;
+    width: 775px;
+    height: 70px;
+    left: 285px;
+    top: 320px;
+
+    /* blue_grey */
+
+    background: #6583A8;
+    border-radius: 10px;
+}

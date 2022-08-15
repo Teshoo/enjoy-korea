@@ -13,9 +13,12 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
+
     <body>
-        {% block header_menu %}
-        {% endblock %}
+        <header>
+            {% block header_menu %}
+            {% endblock %}
+        </header>
 
         {% block body %}
         {% endblock %}
