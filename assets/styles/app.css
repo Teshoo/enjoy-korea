@@ -25,7 +25,7 @@ body {
     align-items: flex-start;
     padding: 0;
 
-    position: absolute;
+    position: relative;
     width: 980px;
     height: 254px;
     left: calc(50% - 980px/2 + 165px);
@@ -196,13 +196,83 @@ body {
     padding: 0px;
 
     position: absolute;
-    width: 775px;
-    height: 70px;
-    left: 285px;
+    left: calc(50% - 775px/2 - 47.5px);
     top: 320px;
+}
+
+.menu_hobbies {
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    width: 155px;
+    height: 70px;
 
     /* blue_grey */
 
     background: #6583A8;
-    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    /* Inside auto layout */
+
+    flex: none;
+    flex-grow: 0;
+
+}
+
+.menu_hobbies_first {
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    width: 155px;
+    height: 70px;
+
+    /* blue_grey */
+
+    background: #6583A8;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px 0px 0px 10px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    flex-grow: 0;
+
+}
+
+.menu_hobbies_last {
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    width: 155px;
+    height: 70px;
+
+    /* blue_grey */
+
+    background: #6583A8;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 0px 10px 10px 0px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    flex-grow: 0;
+}
+
+.menu_hobbies:hover, .menu_hobbies_first:hover, .menu_hobbies_last:hover {
+    background: #516e93;
 }

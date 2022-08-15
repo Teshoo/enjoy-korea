@@ -21,6 +21,10 @@ class HobbyCategory
     #[ORM\ManyToMany(targetEntity: Hobby::class, inversedBy: 'hobbyCategories')]
     private Collection $hobbies;
 
+    #[ORM\ManyToOne(inversedBy: 'hobbyCategories')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?HobbyFamily $hobbyFamilies = null;
+
     public function __construct()
     {
         $this->hobbies = new ArrayCollection();
@@ -68,6 +72,18 @@ class HobbyCategory
     public function removeHobby(Hobby $hobby): self
     {
         $this->hobbies->removeElement($hobby);
+
+        return $this;
+    }
+
+    public function getHobbyFamilies(): ?HobbyFamily
+    {
+        return $this->hobbyFamilies;
+    }
+
+    public function setHobbyFamilies(?HobbyFamily $hobbyFamilies): self
+    {
+        $this->hobbyFamilies = $hobbyFamilies;
 
         return $this;
     }
