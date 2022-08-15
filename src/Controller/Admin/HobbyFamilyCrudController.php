@@ -3,13 +3,13 @@
 namespace App\Controller\Admin;
 
 use App\Entity\HobbyFamily;
-
+use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class HobbyFamilyCrudController extends AbstractController
+class HobbyFamilyCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {

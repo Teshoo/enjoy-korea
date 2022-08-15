@@ -23,7 +23,7 @@ class HobbyCategoryCrudController extends AbstractCrudController
             IdField::new('id')->hideOnForm(),
             TextField::new('name'),
             AssociationField::new('hobbies'),
-
+            AssociationField::new('hobbyFamilies'),
         ];
     }
 }
