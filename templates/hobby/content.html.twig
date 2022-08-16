@@ -2,17 +2,22 @@
 
 {% block header_menu %}
     {% include 'header/default.html.twig' %}
-    {% include 'header/hobbiesSuperCategories.html.twig' %}
+    {% include 'header/hobbyFamilies.html.twig' %}
 {% endblock %}
 
 {% block body %}
-    {% for hobby_category in hobby_categories %}
-        <a href="{{ path('app_hobbyKorea', { name: hobby_category.name}) }}">
-            <div>
-                {{ hobby_category.name }}
-            </div>
-        </a>
-    {% endfor %}
+
+    {% if hobby_categories is defined %}
+
+        {% for hobby_category in hobby_categories %}
+            <a href="{{ path('app_hobbiesKorea', { family: hobby_category.hobbyFamilies.name, category: hobby_category.name}) }}">
+                <div>
+                    {{ hobby_category.name }}
+                </div>
+            </a>
+        {% endfor %}
+
+    {% endif %}
 
     {% if hobbies is defined %}
 

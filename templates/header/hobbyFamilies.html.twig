@@ -1,0 +1,11 @@
+<!-- super categories header -->
+
+<div class="header_hobbies">
+    {% for family in hobby_families %}
+        <a class="menu_a" href="{{ path('app_hobbyCategoriesKorea', { family: family.name}) }}">
+            <div class="menu_hobbies">
+                {{ family.name }}
+            </div>
+        </a>
+    {% endfor %}
+</div>
