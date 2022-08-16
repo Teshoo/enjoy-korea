@@ -7,28 +7,35 @@
 
 {% block body %}
 
-    {% if hobby_categories is defined %}
+    {% if hobbies is not defined %}
+        {% if hobby_categories is defined %}
 
-        {% for hobby_category in hobby_categories %}
-            <a href="{{ path('app_hobbiesKorea', { family: hobby_category.hobbyFamilies.name, category: hobby_category.name}) }}">
-                <div>
-                    {{ hobby_category.name }}
+            <div class="categories_background">
+                <div class="categories">
+                {% for hobby_category in hobby_categories %}
+                    <a class="menu_a" href="{{ path('app_hobbiesKorea', { family: hobby_category.hobbyFamilies.name, category_name: hobby_category.name}) }}">
+                        <div class="category">
+                            {{ hobby_category.name }}
+                        </div>
+                    </a>
+                {% endfor %}
                 </div>
-            </a>
-        {% endfor %}
+            </div>
 
+        {% endif %}
     {% endif %}
+
 
     {% if hobbies is defined %}
 
+        <div class="categories_background">
+            <div class="category_title">
+                {{ selected_category }}
+            </div>
+        </div>
+
         {% for hobby in hobbies %}
-            {{ hobby.name }} -
-
-            {% for category in hobby.hobbyCategories %}
-                {{ category.name }}
-            {% endfor %}
-
-            <br/>
+            {{ hobby.name }}<br/>
         {% endfor %}
 
     {% endif %}

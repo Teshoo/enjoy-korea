@@ -43,11 +43,11 @@ class HobbyRepository extends ServiceEntityRepository
     /**
      * @return Hobby[] Returns an array of Hobby objects
      */
-    public function findByHobbyCategory($hobbyCategory): array
+    public function findByHobbyCategory($value): array
     {
         return $this->createQueryBuilder('h')
-            ->andWhere('h.hobbyCategories = :val')
-            ->setParameter('val', $hobbyCategory)
+            ->andWhere('h.name = :val')
+            ->setParameter('val', $value)
             ->orderBy('h.id', 'ASC')
             //->setMaxResults(10)
             ->getQuery()

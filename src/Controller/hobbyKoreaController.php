@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Hobby;
 use App\Entity\HobbyCategory;
 use App\Entity\HobbyFamily;
 use App\Repository\HobbyFamilyRepository;
@@ -33,16 +34,16 @@ class hobbyKoreaController extends AbstractController
         ]));
     }
 
-    #[Route('/{family}/{category}', name: 'app_hobbiesKorea')]
-    public function hobbies(Environment $twig, HobbyCategoryRepository $hobbyCategoryRepository, HobbyRepository $hobbyRepository, HobbyFamilyRepository $hobbyFamilyRepository, string $category): Response
+    #[Route('/{family}/{category_name}', name: 'app_hobbiesKorea')]
+    public function hobbies(Environment $twig, HobbyCategoryRepository $hobbyCategoryRepository, HobbyRepository $hobbyRepository, HobbyFamilyRepository $hobbyFamilyRepository, string $category_name): Response
     {
-        $hobbyCategory = $hobbyCategoryRepository->findOneByName($category);
+        $hobbyCategory = $hobbyCategoryRepository->findOneByName($category_name);
 
-        return new Response($twig->render('hobby/content.html.twig', [
+         return new Response($twig->render('hobby/content.html.twig', [
+            'selected_category' => $category_name,
             'hobby_families' => $hobbyFamilyRepository->findAll(),
-            'hobby_categories' => $hobbyCategoryRepository->findAll(),
-            'hobby_category' => $hobbyCategoryRepository->findByHobby(['hobby_category' => $category]),
-            'hobbies' => $hobbyRepository->findBy($hobbyCategoryRepository->findByHobby(['hobby_category' => $hobbyCategory]), ['name' => 'DESC']),
+            'hobbies' => $hobbyCategory->getHobbies(),
         ]));
+
     }
 }

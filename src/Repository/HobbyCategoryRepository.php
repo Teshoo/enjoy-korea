@@ -48,7 +48,7 @@ class HobbyCategoryRepository extends ServiceEntityRepository
             ->andWhere('h.name = :val')
             ->setParameter('val', $value)
             ->orderBy('h.id', 'ASC')
-            ->setMaxResults(10)
+            //->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
