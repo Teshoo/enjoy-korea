@@ -39,20 +39,20 @@ class HobbyFamilyRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return HobbyFamily[] Returns an array of HobbyFamily objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('h')
-//            ->andWhere('h.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('h.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+     * @return HobbyFamily[] Returns an array of HobbyFamily objects
+     */
+    public function findByName($value): array
+    {
+        return $this->createQueryBuilder('h')
+            ->andWhere('h.name = :val')
+            ->setParameter('val', $value)
+            ->orderBy('h.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
 //    public function findOneBySomeField($value): ?HobbyFamily
 //    {

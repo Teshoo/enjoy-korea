@@ -13,15 +13,18 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
-
     <body>
         <header>
-            {% block header_menu %}
+            {% block header %}
             {% endblock %}
         </header>
-
-        {% block body %}
-        {% endblock %}
-
+        <div class="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+        <footer>
+            {% block footer %}
+            {% endblock %}
+        </footer>
     </body>
 </html>

@@ -1,19 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block header_menu %}
+{% block header %}
     {% include 'header/default.html.twig' %}
-    {% include 'header/hobbyFamilies.html.twig' %}
 {% endblock %}
 
-{% block body %}
-
+{% block content %}
+    {% include 'header/hobbyFamilies.html.twig' %}
     {% if hobbies is not defined %}
         {% if hobby_categories is defined %}
 
             <div class="categories_background">
                 <div class="categories">
                 {% for hobby_category in hobby_categories %}
-                    <a class="menu_a" href="{{ path('app_hobbiesKorea', { family: hobby_category.hobbyFamilies.name, category_name: hobby_category.name}) }}">
+                    <a class="menu_a" href="{{ path('app_hobbiesKorea', { family_name: hobby_category.hobbyFamilies.name, category_name: hobby_category.name}) }}">
                         <div class="category">
                             {{ hobby_category.name }}
                         </div>

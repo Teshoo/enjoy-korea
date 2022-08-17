@@ -2,13 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\Hobby;
-use App\Entity\HobbyCategory;
-use App\Entity\HobbyFamily;
 use App\Repository\HobbyFamilyRepository;
-use App\Repository\HobbyRepository;
 use App\Repository\HobbyCategoryRepository;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -25,17 +20,19 @@ class hobbyKoreaController extends AbstractController
         ]));
     }
 
-    #[Route('/{family}', name: 'app_hobbyCategoriesKorea')]
-    public function hobbyCategories(Environment $twig, HobbyCategoryRepository $hobbyCategoryRepository, HobbyFamilyRepository $hobbyFamilyRepository): Response
+    #[Route('/{family_name}', name: 'app_hobbyCategoriesKorea')]
+    public function hobbyCategories(Environment $twig, HobbyCategoryRepository $hobbyCategoryRepository, HobbyFamilyRepository $hobbyFamilyRepository, string $family_name): Response
     {
+        $hobbyFamily = $hobbyFamilyRepository->findByName($family_name);
+
         return new Response($twig->render('hobby/content.html.twig', [
             'hobby_families' => $hobbyFamilyRepository->findAll(),
-            'hobby_categories' => $hobbyCategoryRepository->findAll(),
+            'hobby_categories' => $hobbyCategoryRepository->findBy(['hobbyFamilies' => $hobbyFamily]),
         ]));
     }
 
-    #[Route('/{family}/{category_name}', name: 'app_hobbiesKorea')]
-    public function hobbies(Environment $twig, HobbyCategoryRepository $hobbyCategoryRepository, HobbyRepository $hobbyRepository, HobbyFamilyRepository $hobbyFamilyRepository, string $category_name): Response
+    #[Route('/{family_name}/{category_name}', name: 'app_hobbiesKorea')]
+    public function hobbies(Environment $twig, HobbyCategoryRepository $hobbyCategoryRepository, HobbyFamilyRepository $hobbyFamilyRepository, string $category_name): Response
     {
         $hobbyCategory = $hobbyCategoryRepository->findOneByName($category_name);
 

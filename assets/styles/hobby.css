@@ -17,8 +17,13 @@
     top: 320px;
 }
 
+
 .header_hobbies > .menu_hobbies:first-child {
     border-radius: 10px 0px 0px 10px;
+}
+
+.header_hobbies > .menu_hobbies:last-child {
+    border-radius: 0px 10px 10px 0px;
 }
 
 .menu_hobbies {
@@ -57,7 +62,7 @@
     background: #516e93;
 }
 
-/************** HOBBY CARD **************/
+/************** CATEGORY MENU **************/
 
 .categories_background {
     /* Auto layout */
@@ -155,6 +160,8 @@
 
     color: #FFFFFF;
 }
+
+/************** HOBBY RESULTS **************/
 
 .hobbies_count {
     position: absolute;

@@ -1,51 +1,59 @@
 {% extends 'base.html.twig' %}
 
-{% block header_menu %}
-    <div>
-        <a class="menu_a" href="{{ path('app_enjoyKorea') }}">
+{% block header %}
+    <div class="logo">
+        <a href="{{ path('app_enjoyKorea') }}">
             <img class="logo" src="{{ asset('visitkorea_logo_white 1.svg') }}" alt="visit korea logo">
         </a>
     </div>
-    <div class="header_homepage">
-        <a class="menu_a" href="{{ path('app_eventKorea') }}">
-            <div class="menu_homepage">
-                <div class="menu_homepage_title">
-                    What to do tonight?
-                </div>
-                <div class="menu_homepage_description">
-                    <p>
-                        Find something around this evening:
-                    </p>
-                    <p>
-                        - Concert<br>
-                        - Walk<br>
-                        - Cinema
-                    </p>
-                </div>
+    <div class="header_default">
+    </div>
+{% endblock %}
+
+{% block content %}
+
+    <div class="homepage">
+        <a class="menu_homepage" href="{{ path('app_eventKorea') }}">
+            <div class="menu_homepage_title">
+                What to do tonight?
+            </div>
+            <div class="menu_homepage_description">
+                <p>
+                    Find something around this evening:
+                </p>
+                <ul>
+                    <li>Concert</li>
+                    <li>Walk</li>
+                    <li>Cinema</li>
+                </ul>
             </div>
         </a>
-        <a class="menu_a" href="{{ path('app_hobbyFamiliesKorea') }}">
-            <div class="menu_homepage">
-                <div class="menu_homepage_title">
-                    Practice your hobbies
-                </div>
-                <div class="menu_homepage_description">
-                    <p>
-                        Find a hobby in your area:
-                    </p>
-                    <p>
-                        - Do sport<br>
-                        - Practice musique<br>
-                        - Take dance lessons
-                    </p>
-                </div>
+        <a class="menu_homepage" href="{{ path('app_hobbyFamiliesKorea') }}">
+            <div class="menu_homepage_title">
+                Practice your hobbies
+            </div>
+            <div class="menu_homepage_description">
+                <p>
+                    Find a hobby in your area:
+                </p>
+                <ul>
+                    <li>Do sport</li>
+                    <li>Practice musique</li>
+                    <li>Take dance lessons</li>
+                </ul>
             </div>
         </a>
-        <a class="menu_a" href="#">
-            <div class="favorite">
-                <div class="favorite_title">
-                    Favorites
-                </div>
+        <a class="favorite_homepage" href="#">
+            <div class="favorite_homepage_title">
+                Favorites
+            </div>
+            <div class="favorite_homepage_description">
+                <p>
+                    Everything you saved as you favorites!
+                </p>
+                <p>
+                    -> 12 events + 3 hobbies
+                </p>
             </div>
         </a>
     </div>

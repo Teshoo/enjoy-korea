@@ -1,9 +1,29 @@
+html {
+    height: 100%;
+}
 body {
     background-color: #344356;
     color: #FFFFFF;
     font-family: 'Leelawadee UI', "Trebuchet MS", Verdana, sans-serif;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 100%;
+    min-height: 100%;
+    height: 100%;
+    margin: 0;
 }
 
-.menu_a {
-    text-decoration: none;
+.content {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: flex-start;
+    width: auto;
 }
+
+footer {
+    background-color: #353535;
+    height: 200px;
+    bottom: 0;
+}
+
