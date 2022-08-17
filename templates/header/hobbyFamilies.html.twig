@@ -2,10 +2,10 @@
 
 <div class="header_hobbies">
     {% for family in hobby_families %}
-        <a class="menu_a" href="{{ path('app_hobbyCategoriesKorea', { family: family.name}) }}">
-            <div class="menu_hobbies">
+        <a class="menu_hobbies" href="{{ path('app_hobbyCategoriesKorea', { family: family.name}) }}">
+
                 {{ family.name }}
-            </div>
+
         </a>
     {% endfor %}
 </div>
