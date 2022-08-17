@@ -35,8 +35,25 @@
         </div>
 
         {% for hobby in hobbies %}
-            {{ hobby.name }}<br/>
+            <div class="hobbies_count">
+                <div class="hobbies_count_text">
+                    {{ loop.length }} results
+                </div>
+            </div>
         {% endfor %}
+
+        <div class="hobbies_results">
+            {% for hobby in hobbies %}
+
+                <div class="hobby_card">
+                    {{ hobby.name }}
+                </div>
+
+            {% endfor %}
+            <div class="hobby_card">
+
+            </div>
+        </div>
 
     {% endif %}
 {% endblock %}
