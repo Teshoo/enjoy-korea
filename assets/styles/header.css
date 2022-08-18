@@ -3,7 +3,6 @@ header {
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
-    width: auto;
 }
 
 .logo {
@@ -13,12 +12,13 @@ header {
 
 .header_default {
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     flex: 1 1;
     justify-content: space-evenly;
     gap: 10px;
     width: auto;
     max-width: 1080px;
+    margin-right: 5%;
 }
 
 .menu_default {

@@ -14,16 +14,18 @@ body {
 }
 
 .content {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
+    /*display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
     align-items: flex-start;
-    width: auto;
+    width: 100%;*/
+    display: grid;
 }
 
 footer {
     background-color: #353535;
     height: 200px;
     bottom: 0;
+    margin-top: 50px;
 }
 

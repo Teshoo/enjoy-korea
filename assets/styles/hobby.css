@@ -5,16 +5,11 @@
 /************** FAMILY MENU **************/
 
 .header_hobbies {
-    /* Auto layout */
-
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 0px;
-
-    position: absolute;
-    left: calc(50% - 775px/2 - 47.5px);
-    top: 320px;
+    flex-flow: row nowrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 50px 20%;
 }
 
 
@@ -27,9 +22,8 @@
 }
 
 .menu_hobbies {
-    /* Auto layout */
-
     display: flex;
+    flex: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -38,21 +32,12 @@
     width: 155px;
     height: 70px;
 
-    /* blue_grey */
-
     background: #6583A8;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
-    /* Inside auto layout */
-
-    flex: none;
-
-    font-family: 'Leelawadee UI', "Trebuchet MS", Verdana, sans-serif;
-    font-style: normal;
     font-weight: 400;
     font-size: 20px;
     line-height: 27px;
-    text-align: center;
     color: #FFFFFF;
     text-decoration: none;
 
@@ -65,106 +50,68 @@
 /************** CATEGORY MENU **************/
 
 .categories_background {
-    /* Auto layout */
     display: flex;
-    flex-direction: column;
+    flex-flow: column wrap;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     padding: 30px;
-    gap: 30px;
 
-    position: absolute;
-    width: 1090px;
-    left: calc(50% - 1090px/2);
-    top: 470px;
+    width: 80%;
+    max-width: 1500px;
+    margin-inline: auto;
 
     background: rgba(101, 131, 168, 0.3);
     border-radius: 10px;
 }
 
 .categories {
-    /* Auto layout */
-
     display: flex;
-    flex-direction: row;
+    flex-flow: row wrap;
     justify-content: center;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 30px;
+    align-items: center;
 
-    width: 1030px;
-    height: 50px;
+    row-gap: 20px;
+    column-gap: 30px;
 
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 1;
-    align-self: stretch;
-    flex-grow: 0;
+    width: 100%;
 }
 
 .category {
-    /* Auto layout */
-
     display: flex;
-    flex-direction: column;
+    flex-flow: column;
     align-items: center;
     justify-content: center;
-    padding: 0px;
-    gap: 10px;
 
-    width: 150px;
+    min-width: 140px;
     height: 50px;
-
-
-    /* Inside auto layout */
-
-    flex: none;
-    flex-grow: 0;
-
-    /* grey */
+    padding: 0 7px 0 7px;
 
     background: #6B7B8E;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
-    font-style: normal;
+
     font-weight: 700;
     font-size: 14px;
     line-height: 19px;
-
-    /* text */
-
     letter-spacing: 0.05em;
     text-transform: uppercase;
     color: #FFFFFF;
+    text-decoration: none;
 }
 
 .category_title {
-
-    font-style: normal;
     font-weight: 700;
     font-size: 24px;
     line-height: 32px;
 
-    /* identical to box height */
-
-    display: flex;
-    align-self: stretch;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-
-
     color: #FFFFFF;
 }
 
 /************** HOBBY RESULTS **************/
 
 .hobbies_count {
-    position: absolute;
     height: 27px;
     left: 4.51%;
     right: 87.92%;
@@ -173,7 +120,6 @@
 }
 
 .hobbies_count_text {
-    position: absolute;
     left: -6.86%;
     top: 3.7%;
     bottom: 7.41%;
@@ -193,7 +139,6 @@
 }
 
 .hobbies_results {
-    position: absolute;
     left: 4.51%;
     right: 4.51%;
     top: 656px;

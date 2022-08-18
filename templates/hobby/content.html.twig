@@ -6,33 +6,30 @@
 
 {% block content %}
     {% include 'header/hobbyFamilies.html.twig' %}
-    {% if hobbies is not defined %}
-        {% if hobby_categories is defined %}
 
-            <div class="categories_background">
+    <div class="categories_background">
+        {% if hobbies is not defined %}
+            {% if hobby_categories is defined %}
+
                 <div class="categories">
-                {% for hobby_category in hobby_categories %}
-                    <a class="menu_a" href="{{ path('app_hobbiesKorea', { family_name: hobby_category.hobbyFamilies.name, category_name: hobby_category.name}) }}">
-                        <div class="category">
+                    {% for hobby_category in hobby_categories %}
+                        <a class="category" href="{{ path('app_hobbiesKorea', { family_name: hobby_category.hobbyFamilies.name, category_name: hobby_category.name}) }}">
                             {{ hobby_category.name }}
-                        </div>
-                    </a>
-                {% endfor %}
+                        </a>
+                    {% endfor %}
                 </div>
-            </div>
 
+            {% endif %}
         {% endif %}
-    {% endif %}
-
-
-    {% if hobbies is defined %}
-
-        <div class="categories_background">
+        {% if hobbies is defined %}
             <div class="category_title">
                 {{ selected_category }}
             </div>
-        </div>
+        {% endif %}
+    </div>
 
+    {% if hobbies is defined %}
+    <div>
         {% for hobby in hobbies %}
             <div class="hobbies_count">
                 <div class="hobbies_count_text">
@@ -53,6 +50,6 @@
 
             </div>
         </div>
-
+    </div>
     {% endif %}
 {% endblock %}
