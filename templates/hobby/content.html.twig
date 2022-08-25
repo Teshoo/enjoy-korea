@@ -31,24 +31,86 @@
     {% if hobbies is defined %}
     <div>
         {% for hobby in hobbies %}
-            <div class="hobbies_count">
-                <div class="hobbies_count_text">
-                    {{ loop.length }} results
+            {% if loop.last %}
+                <div class="hobbies_count">
+                    <div class="hobbies_count_text">
+                        {{ loop.length }} results
+                    </div>
                 </div>
-            </div>
+            {% endif %}
         {% endfor %}
 
         <div class="hobbies_results">
             {% for hobby in hobbies %}
-
-                <div class="hobby_card">
-                    {{ hobby.name }}
+                <div class="hobby_card_background">
+                    <div class="hobby_card">
+                        <div class="hobby_card_top">
+                            <div class="hobby_card_top_left">
+                                <div class="hobby_card_titles">
+                                    <div class="hobby_card_title">
+                                        {{ hobby.name }}
+                                    </div>
+                                    <div class="hobby_card_hangeul">
+                                        {{ hobby.hangeulName }}
+                                    </div>
+                                </div>
+                                <div class="hobby_card_phone">
+                                    {{ hobby.phoneNb }}
+                                </div>
+                            </div>
+                            <!-- additional information generated through database -->
+                            <div class="hobby_card_top_right">
+                                <div class="hobby_card_add_info">
+                                    <div class="hobby_card_add_info_button">
+                                        Rackets provided
+                                    </div>
+                                    <div class="hobby_card_add_info_button">
+                                        Individual training
+                                    </div>
+                                </div>
+                                <div class="hobby_card_basic_info">
+                                    <div class="hobby_card_basic_info_button">
+                                        <div class="hobby_card_basic_info_button_main_text">
+                                            10:30 - 22:30
+                                        </div>
+                                        <div class="hobby_card_basic_info_button_sub_text">
+                                            everyday
+                                        </div>
+                                    </div>
+                                    <div class="hobby_card_basic_info_button">
+                                        <div class="hobby_card_basic_info_button_main_text">
+                                            5000 wons
+                                        </div>
+                                        <div class="hobby_card_basic_info_button_sub_text">
+                                            for 1 hour
+                                        </div>
+                                    </div>
+                                    <div class="hobby_card_basic_info_button">
+                                        <div class="hobby_card_basic_info_button_main_text">
+                                            0.5 kms
+                                        </div>
+                                        <div class="hobby_card_basic_info_button_sub_text">
+                                            10 min walk
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="favorite_add"></div>
+                            </div>
+                        </div>
+                        <div class="hobby_card_bottom">
+                            <div class="hobby_card_bottom_button">
+                                See more
+                            </div>
+                            <div class="hobby_card_bottom_button">
+                                Visit website
+                            </div>
+                            <div class="hobby_card_bottom_button">
+                                Ask for support
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
             {% endfor %}
-            <div class="hobby_card">
-
-            </div>
         </div>
     </div>
     {% endif %}

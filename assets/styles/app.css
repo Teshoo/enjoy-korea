@@ -1,5 +1,4 @@
 html {
-    height: 100%;
 }
 body {
     background-color: #344356;
@@ -13,29 +12,22 @@ body {
         "header"
         "content"
         "footer";
-    column-gap: 10px;
-    align-content: stretch;
 
-    height:100%;
-    min-height: 100%;
     margin: 0;
+    gap: 0;
 }
 
 .content {
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: flex-start;
-    align-items: flex-start;
-    width: 100%;
-    /*display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    column-gap: 10px;*/
     grid-area: content;
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: 0 10%;
 }
 
 footer {
     grid-area: footer;
     background-color: #353535;
     height: 200px;
+    margin-top: 50px;
 }
 

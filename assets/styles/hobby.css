@@ -56,9 +56,7 @@
     align-items: center;
     padding: 30px;
 
-    width: 80%;
-    max-width: 1500px;
-    margin-inline: auto;
+    margin: 30px 10%;
 
     background: rgba(101, 131, 168, 0.3);
     border-radius: 10px;
@@ -113,50 +111,201 @@
 
 .hobbies_count {
     height: 27px;
-    left: 4.51%;
-    right: 87.92%;
-    top: 609px;
+    margin: 0 0 20px 0;
     width:auto;
 }
 
 .hobbies_count_text {
-    left: -6.86%;
-    top: 3.7%;
-    bottom: 7.41%;
+    text-indent: -10px;
 
     font-style: normal;
     font-weight: 350;
     font-size: 18px;
     line-height: 24px;
-    /* identical to box height */
 
-    display: flex;
-    align-items: center;
     letter-spacing: 0.15em;
     font-feature-settings: 'kern' off, 'clig' off;
-
-    color: #FFFFFF;
 }
 
 .hobbies_results {
-    left: 4.51%;
-    right: 4.51%;
-    top: 656px;
-
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 50px;
+    justify-content: space-between;
+}
+
+.hobby_card_background {
+    position: relative;
+    height: 250px;
+}
+.hobby_card_background::before {
+    content: "";
+    position: absolute;
+
+    width: 100%;
+    height: 250px;
+
+    background-image: url("../pinpong.jpg");
+    background-size: cover;
+    background-position: center;
+    filter: brightness(30%) saturate(400%);
+    background-repeat: no-repeat;
+
+    border-radius: 10px;
 }
 
 .hobby_card {
-
     padding: 15px 15px 15px 20px;
+    position: relative;
 
-    height: 250px;
-    width:auto;
+    height: 220px;
 
-    background-image: url("../pinpong.jpg");
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+}
+
+.hobby_card_top {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    gap: 15px;
+
+    align-self: stretch;
+}
+
+.hobby_card_top_left {
+    display: flex;
+    flex-flow: column nowrap;
+    align-self: stretch;
+
+    justify-content: space-between;
+}
+
+.hobby_card_titles {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 5px;
+}
+
+.hobby_card_title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+}
+
+.hobby_card_hangeul {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+}
+
+.hobby_card_phone {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 10px;
+}
+
+.hobby_card_top_right {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 15px;
+    justify-content: space-between;
+}
+
+.hobby_card_add_info {
+    display: flex;
+    flex-flow: column;
+    gap: 10px;
+}
+
+.hobby_card_add_info_button {
+    width: 100px;
+    height: 40px;
+    background: #DDE8C8;
+    border-radius: 5px;
+
+    color: #344356;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.hobby_card_basic_info {
+    display: flex;
+    flex-flow: column;
+    gap: 10px;
+}
+
+.hobby_card_basic_info_button {
+    width: 170px;
+    height: 50px;
+
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
+    background: #6B7B8E;
     border-radius: 10px;
-    background-repeat: no-repeat;
+}
+
+.hobby_card_basic_info_button_main_text {
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 20px;
+}
+
+.hobby_card_basic_info_button_sub_text {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.favorite_add {
+    width: 45px;
+    height: 45px;
+    min-width: 45px;
+    background: url("../icon_fav_empty.svg");
     background-size: cover;
 }
+
+.favorite_add:hover {
+    width: 45px;
+    height: 45px;
+    background: url("../icon_fav_full.svg");
+    background-size: cover;
+}
+
+.hobby_card_bottom {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    gap: 10%;
+    padding: 0 5% 0 5%;
+}
+
+.hobby_card_bottom_button {
+    width: 120px;
+    height: 35px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+
+    color: #000000;
+}
+
