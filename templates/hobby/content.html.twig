@@ -7,13 +7,18 @@
 {% block content %}
     {% include 'header/hobbyFamilies.html.twig' %}
 
-    <div class="categories_background">
+    <div class="categories_background" data-controller="categoriesfilter">
         {% if hobbies is not defined %}
             {% if hobby_categories is defined %}
-
+                <div class="categories_search">
+                    <input  data-action="keyup->categoriesfilter#categories_filter" data-categoriesfilter-target="filter" type="text" placeholder="Enter a sport: taekwondo, badminton..." class="categories_search_input">
+                    <div>
+                        <img href="{{ asset('icon_cate_search.svg') }}">
+                    </div>
+                </div>
                 <div class="categories">
                     {% for hobby_category in hobby_categories %}
-                        <a class="category" href="{{ path('app_hobbiesKorea', { family_name: hobby_category.hobbyFamilies.name, category_name: hobby_category.name}) }}">
+                        <a data-categoriesfilter-target="category" class="category" href="{{ path('app_hobbiesKorea', { family_name: hobby_category.hobbyFamilies.name, category_name: hobby_category.name}) }}">
                             {{ hobby_category.name }}
                         </a>
                     {% endfor %}
