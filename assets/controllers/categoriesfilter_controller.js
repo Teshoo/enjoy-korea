@@ -1,9 +1,7 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-
     static targets = ['filter', 'category'];
-
 
     categories_filter() {
         let category, txtValue, string, input;
@@ -20,10 +18,5 @@ export default class extends Controller {
                 category.style.display = "none";
             }
         }
-
-
-        //this.categoryTargets[1].innerHTML = "test";
-
-        //console.log("test", this.categoryTarget);
     }
 }

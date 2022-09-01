@@ -83,14 +83,28 @@
 
 .categories_search_input {
     border: none;
+    outline: none;
 
     font-weight: 400;
     font-size: 18px;
     line-height: 21px;
 
-    justify-self: stretch;
+    width: 100%;
 
-    color: #B0B0B0
+    color: #6583A8;
+}
+
+.categories_search_input::placeholder {
+    color: #B0B0B0;
+    opacity: 1;
+}
+
+.search_icon {
+    width: 25px;
+    height: 25px;
+    min-width: 25px;
+    background: url("../icon_cate_search.svg");
+    background-size: cover;
 }
 
 .categories {
@@ -136,6 +150,8 @@
     letter-spacing: 0.05em;
     text-transform: uppercase;
     color: #FFFFFF;
+    width: 100%;
+    text-align: center;
 }
 
 /************** HOBBY RESULTS **************/
