@@ -49,6 +49,17 @@ header {
     background: #516e93;
 }
 
+.menu_default_active {
+    background: #DDE8C8;
+
+    color: #6583A8;
+    font-weight: 500;
+}
+
+.menu_default_active:hover {
+    background: #DDE8C8;
+}
+
 .favorite {
     display: flex;
     flex: none;

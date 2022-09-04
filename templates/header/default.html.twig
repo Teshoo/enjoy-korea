@@ -6,12 +6,21 @@
     </a>
 </div>
 <div class="header_default">
-    <a class="menu_default" href="{{ path('app_eventKorea') }}">
-        What to do tonight?
-    </a>
-    <a class="menu_default" href="{{ path('app_hobbyFamiliesKorea') }}">
-        Practice your hobbies
-    </a>
+    {% if app.request.attributes.get('_route') == 'app_eventKorea' %}
+        <a class="menu_default menu_default_active" href="{{ path('app_eventKorea') }}">
+            What to do tonight?
+        </a>
+        <a class="menu_default" href="{{ path('app_hobbyFamilies') }}">
+            Practice your hobbies
+        </a>
+    {% elseif app.request.attributes.get('_route') == 'app_hobbyFamilies' or app.request.attributes.get('family_name') %}
+        <a class="menu_default" href="{{ path('app_eventKorea') }}">
+            What to do tonight?
+        </a>
+        <a class="menu_default menu_default_active" href="{{ path('app_hobbyFamilies') }}">
+            Practice your hobbies
+        </a>
+    {% endif %}
     <a class="favorite" href="#">
         Favorites
     </a>

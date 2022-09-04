@@ -2,8 +2,14 @@
 
 <div class="header_hobbies">
     {% for family in hobby_families %}
-        <a class="menu_hobbies" href="{{ path('app_hobbyCategoriesKorea', { family_name: family.name}) }}">
-                {{ family.name }}
-        </a>
+            {% if app.request.attributes.get('family_name') == family.name %}
+                <a class="menu_hobbies menu_hobbies_active" href="{{ path('app_hobbyCategoriesKorea', { family_name: family.name}) }}">
+                        {{ family.name }}
+                </a>
+            {% else %}
+                <a class="menu_hobbies" href="{{ path('app_hobbyCategoriesKorea', { family_name: family.name}) }}">
+                        {{ family.name }}
+                </a>
+            {% endif %}
     {% endfor %}
 </div>

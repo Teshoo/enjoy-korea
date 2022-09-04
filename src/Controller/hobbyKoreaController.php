@@ -12,7 +12,8 @@ use Twig\Environment;
 #[Route('/practice_your_hobbies')]
 class hobbyKoreaController extends AbstractController
 {
-    #[Route('/', name: 'app_hobbyFamiliesKorea')]
+
+    #[Route('/', name: 'app_hobbyFamilies')]
     public function hobbyFamilies(Environment $twig, HobbyFamilyRepository $hobbyFamilyRepository): Response
     {
         return new Response($twig->render('hobby/content.html.twig', [

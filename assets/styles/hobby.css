@@ -40,11 +40,20 @@
     line-height: 27px;
     color: #FFFFFF;
     text-decoration: none;
-
 }
 
 .menu_hobbies:hover {
     background: #516e93;
+}
+
+.menu_hobbies_active {
+    background: #DDE8C8;
+
+    color: #6583A8;
+}
+
+.menu_hobbies_active:hover {
+    background: #DDE8C8;
 }
 
 /************** CATEGORY MENU **************/
