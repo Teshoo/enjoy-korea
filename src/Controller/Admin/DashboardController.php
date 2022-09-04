@@ -5,10 +5,12 @@ namespace App\Controller\Admin;
 use App\Entity\Hobby;
 use App\Entity\HobbyCategory;
 use App\Entity\HobbyFamily;
+use App\Entity\Users;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
+use http\Client\Curl\User;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -50,6 +52,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToRoute('Back to Enjoy Korea', 'fas fa-home', 'app_enjoyKorea');
         yield MenuItem::linkToCrud('Hobbies', 'fas fa-list', Hobby::class);
         yield MenuItem::linkToCrud('Hobbies Categories', 'fas fa-list', HobbyCategory::class);
-        yield MenuItem::linkToCrud('Hobbies Family', 'fas fa-list', HobbyFamily::class);
+        yield MenuItem::linkToCrud('Hobbies Family', 'fa-solid fa-broom-ball', HobbyFamily::class);
+        yield MenuItem::linkToCrud('Users', 'fa-solid fa-user', Users::class);
     }
 }

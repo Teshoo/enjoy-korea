@@ -20,6 +20,13 @@
         <a class="menu_default menu_default_active" href="{{ path('app_hobbyFamilies') }}">
             Practice your hobbies
         </a>
+    {% else %}
+        <a class="menu_default" href="{{ path('app_eventKorea') }}">
+            What to do tonight?
+        </a>
+        <a class="menu_default" href="{{ path('app_hobbyFamilies') }}">
+            Practice your hobbies
+        </a>
     {% endif %}
     <a class="favorite" href="#">
         Favorites
