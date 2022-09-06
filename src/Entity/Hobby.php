@@ -33,9 +33,13 @@ class Hobby
     #[ORM\ManyToMany(targetEntity: HobbyCategory::class, mappedBy: 'hobbies')]
     private Collection $hobbyCategories;
 
+    #[ORM\ManyToMany(targetEntity: Users::class, mappedBy: 'hobbies')]
+    private Collection $users;
+
     public function __construct()
     {
         $this->hobbyCategories = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
     public function __toString(): string
@@ -130,6 +134,33 @@ class Hobby
     {
         if ($this->hobbyCategories->removeElement($hobbyCategory)) {
             $hobbyCategory->removeHobby($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Users>
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(Users $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users->add($user);
+            $user->addHobby($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(Users $user): self
+    {
+        if ($this->users->removeElement($user)) {
+            $user->removeHobby($this);
         }
 
         return $this;

@@ -55,6 +55,21 @@ class HobbyRepository extends ServiceEntityRepository
         ;
     }
 
+    /**
+     * @return Hobby[] Returns an array of Hobby objects
+     */
+    public function findByUser($value): array
+    {
+        return $this->createQueryBuilder('h')
+            ->andWhere('h.id = :val')
+            ->setParameter('val', $value)
+            ->orderBy('h.id', 'ASC')
+            //->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
 //    public function findOneBySomeField($value): ?Hobby
 //    {
 //        return $this->createQueryBuilder('h')

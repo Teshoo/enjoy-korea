@@ -1,3 +1,5 @@
+@import '~leaflet';
+
 
 /********* CSS RELATED TO HOBBY PAGE *********/
 
@@ -329,12 +331,31 @@
     min-width: 45px;
     background: url("../icon_fav_empty.svg");
     background-size: cover;
+
+    cursor: pointer;
+}
+
+.favorite_remove {
+    width: 45px;
+    height: 45px;
+    min-width: 45px;
+    background: url("../icon_fav_full.svg");
+    background-size: cover;
+
+    cursor: pointer;
 }
 
 .favorite_add:hover {
     width: 45px;
     height: 45px;
     background: url("../icon_fav_full.svg");
+    background-size: cover;
+}
+
+.favorite_remove:hover {
+    width: 45px;
+    height: 45px;
+    background: url("../icon_fav_empty.svg");
     background-size: cover;
 }
 
@@ -365,3 +386,6 @@
     color: #000000;
 }
 
+.map {
+    height: 500px;
+}

@@ -5,46 +5,22 @@
 {% endblock %}
 
 {% block content %}
-    {% include 'header/hobbyFamilies.html.twig' %}
-
-    <div class="categories_background" data-controller="categoriesfilter">
-        {% if hobbies is not defined %}
-            {% if hobby_categories is defined %}
-                <div class="categories_search">
-                    <input  data-action="keyup->categoriesfilter#categories_filter" data-categoriesfilter-target="filter" type="text" placeholder="Enter a sport: taekwondo, badminton..." class="categories_search_input">
-                    <div class="search_icon"></div>
-                </div>
-                <div class="categories">
-                    {% for hobby_category in hobby_categories | sort((a,b) => a.name <=> b.name) %}
-                        <a data-categoriesfilter-target="category" class="category" href="{{ path('app_hobbiesKorea', { family_name: hobby_category.hobbyFamilies.name, category_name: hobby_category.name}) }}">
-                            {{ hobby_category.name }}
-                        </a>
-                    {% endfor %}
-                </div>
-
-            {% endif %}
-        {% endif %}
-        {% if hobbies is defined %}
-            <div class="category_title">
-                {{ selected_category }}
+    <div class="favorite_container">
+        <div class="favorite_event_column">
+            <div class="favorite_column_title">
+                Upcoming events
             </div>
-        {% endif %}
-    </div>
-
-    {% if hobbies is defined %}
-    <div>
-        {% for hobby in hobbies %}
-            {% if loop.last %}
-                <div class="hobbies_count">
-                    <div class="hobbies_count_text">
-                        {{ loop.length }} results
-                    </div>
+            {% for event in events %}
+            {% else %}
+                <div class="favorite_no_items">
+                    Go to <a href="{{ path('app_eventKorea') }}">What to do tonight?</a> to add upcoming events in your favorites!
                 </div>
-            {% endif %}
-        {% endfor %}
-
-        <div class="hobbies_results">
-            <div class="map" data-controller="map" data-map-target="map"></div>
+            {% endfor %}
+        </div>
+        <div class="favorite_hobby_column">
+            <div class="favorite_column_title">
+                Hobbies
+            </div>
             {% for hobby in hobbies %}
                 <div class="hobby_card_background">
                     <div class="hobby_card">
@@ -98,24 +74,7 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                {% set isFavorite = false %}
-
-                                {% for favorite in app.user.hobbies %}
-                                    {% if hobby == favorite %}
-                                        {% set isFavorite = true %}
-                                    {% endif %}
-                                {% endfor %}
-
-                                <div data-controller="favorites">
-                                    {% if isFavorite == true %}
-                                        <div class="favorite_remove" data-favorites-target="removeFavorite"></div>
-                                    {% elseif isFavorite == false %}
-                                        <div class="favorite_add" data-favorites-target="addFavorite"></div>
-                                    {% else %}
-                                        weird
-                                    {% endif %}
-                                </div>
+                                <div class="favorite_add"></div>
                             </div>
                         </div>
                         <div class="hobby_card_bottom">
@@ -131,8 +90,11 @@
                         </div>
                     </div>
                 </div>
+            {% else %}
+                <div class="favorite_no_items">
+                    Go to <a href="{{ path('app_hobbyFamilies') }}">Practice your hobbies</a> to add hobbies in your favorites!
+                </div>
             {% endfor %}
         </div>
     </div>
-    {% endif %}
 {% endblock %}

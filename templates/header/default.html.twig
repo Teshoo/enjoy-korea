@@ -13,12 +13,28 @@
         <a class="menu_default" href="{{ path('app_hobbyFamilies') }}">
             Practice your hobbies
         </a>
+        <a class="favorite" href="{{ path('app_favorites') }}">
+            Favorites
+        </a>
     {% elseif app.request.attributes.get('_route') == 'app_hobbyFamilies' or app.request.attributes.get('family_name') %}
         <a class="menu_default" href="{{ path('app_eventKorea') }}">
             What to do tonight?
         </a>
         <a class="menu_default menu_default_active" href="{{ path('app_hobbyFamilies') }}">
             Practice your hobbies
+        </a>
+        <a class="favorite" href="{{ path('app_favorites') }}">
+            Favorites
+        </a>
+    {% elseif app.request.attributes.get('_route') == 'app_favorites' %}
+        <a class="menu_default" href="{{ path('app_eventKorea') }}">
+            What to do tonight?
+        </a>
+        <a class="menu_default" href="{{ path('app_hobbyFamilies') }}">
+            Practice your hobbies
+        </a>
+        <a class="favorite menu_default_active" href="{{ path('app_favorites') }}">
+            Favorites
         </a>
     {% else %}
         <a class="menu_default" href="{{ path('app_eventKorea') }}">
@@ -27,8 +43,8 @@
         <a class="menu_default" href="{{ path('app_hobbyFamilies') }}">
             Practice your hobbies
         </a>
+        <a class="favorite" href="{{ path('app_favorites') }}">
+            Favorites
+        </a>
     {% endif %}
-    <a class="favorite" href="#">
-        Favorites
-    </a>
 </div>

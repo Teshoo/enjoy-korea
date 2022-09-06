@@ -1,0 +1,60 @@
+
+/********* CSS RELATED TO FAVORITE PAGE *********/
+
+.favorite_container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+    justify-content: space-between;
+}
+
+.favorite_event_column {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 50px;
+}
+
+.favorite_hobby_column {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 50px;
+    align-content: space-between;
+}
+
+.favorite_column_title {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+
+    height: 50px;
+    background: rgba(101, 131, 168, 0.3);
+    border-radius: 10px;
+
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.favorite_no_items {
+    text-align: center;
+}
+
+.favorite_no_items>a:link {
+    color: #DDE8C8;
+}
+
+.favorite_no_items>a:visited {
+    color: #DDE8C8;
+}
+
+.favorite_no_items>a:hover {
+    color: #DDE8C8;
+}
+
+.favorite_no_items>a:active {
+    color: #DDE8C8;
+}
