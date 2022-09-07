@@ -5,7 +5,6 @@ export default class extends Controller {
     static targets = ['map'];
 
     connect() {
-        console.log('?');
         let map = L.map(this.mapTarget, {
             closePopupOnClick: false,
             scrollWheelZoom: false,

@@ -2,12 +2,14 @@
 
 namespace App\Controller;
 
+use App\Entity\Hobby;
 use App\Repository\HobbyRepository;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Twig\Environment;
-use App\Entity\Users;
 
 #[Route('/favorites')]
 class favoriteController extends AbstractController
@@ -20,7 +22,25 @@ class favoriteController extends AbstractController
         ]));
     }
 
-    public function addFavorites() {
+    #[Route('/hobby/{hobbyId}/add', name: 'app_addFavorite', methods: 'POST')]
+    public function addFavorite(Environment $twig, ManagerRegistry $doctrine, Hobby $hobbyId): RedirectResponse
+    {
+        $entityManager = $doctrine->getManager();
+        $this->getUser()->addHobby($hobbyId);
+        $entityManager->flush();
 
+        return $this->redirectToRoute('app_favorites');
+
+
+    }
+
+    #[Route('/hobby/{hobbyId}/remove', name: 'app_removeFavorite', methods: 'POST')]
+    public function removeFavorite(Environment $twig, ManagerRegistry $doctrine, Hobby $hobbyId): RedirectResponse
+    {
+        $entityManager = $doctrine->getManager();
+        $this->getUser()->removeHobby($hobbyId);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('app_favorites');
     }
 }

@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Hobby;
 use App\Repository\HobbyFamilyRepository;
 use App\Repository\HobbyCategoryRepository;
+use App\Repository\HobbyRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -12,7 +14,6 @@ use Twig\Environment;
 #[Route('/practice_your_hobbies')]
 class hobbyKoreaController extends AbstractController
 {
-
     #[Route('/', name: 'app_hobbyFamilies')]
     public function hobbyFamilies(Environment $twig, HobbyFamilyRepository $hobbyFamilyRepository): Response
     {
@@ -42,6 +43,5 @@ class hobbyKoreaController extends AbstractController
             'hobby_families' => $hobbyFamilyRepository->findAll(),
             'hobbies' => $hobbyCategory->getHobbies(),
         ]));
-
     }
 }

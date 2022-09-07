@@ -107,15 +107,29 @@
                                     {% endif %}
                                 {% endfor %}
 
-                                <div data-controller="favorites">
-                                    {% if isFavorite == true %}
-                                        <div class="favorite_remove" data-favorites-target="removeFavorite"></div>
-                                    {% elseif isFavorite == false %}
-                                        <div class="favorite_add" data-favorites-target="addFavorite"></div>
-                                    {% else %}
+
+
+                                {% if isFavorite == true %}
+                                    <form   action="{{ path('app_removeFavorite', { hobbyId: hobby.id }) }}"
+                                            method="POST"
+                                            {{ stimulus_controller('favorites') }}>
+                                        <div class="favorite_remove"
+                                                {{ stimulus_target('favorites', 'icon') }}
+                                                {{ stimulus_action('favorites', 'manageFavorite', 'click') }}>
+                                        </div>
+                                    </form>
+                                {% elseif isFavorite == false %}
+                                    <form   action="{{ path('app_addFavorite', { hobbyId: hobby.id }) }}"
+                                            method="POST"
+                                            {{ stimulus_controller('favorites') }}>
+                                        <div class="favorite_add"
+                                                {{ stimulus_target('favorites', 'icon') }}
+                                                {{ stimulus_action('favorites', 'manageFavorite', 'click') }}>
+                                        </div>
+                                    </form>
+                                {% else %}
                                         weird
-                                    {% endif %}
-                                </div>
+                                {% endif %}
                             </div>
                         </div>
                         <div class="hobby_card_bottom">
