@@ -192,6 +192,8 @@
     justify-content: space-between;
 }
 
+/************** HOBBY CARD **************/
+
 .hobby_card_background {
     position: relative;
     height: 250px;
@@ -325,6 +327,35 @@
     line-height: 16px;
 }
 
+.hobby_card_bottom {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    gap: 10%;
+    padding: 0 5% 0 5%;
+}
+
+.hobby_card_bottom_button {
+    width: 120px;
+    height: 35px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+
+    color: #000000;
+}
+
+/************** HOBBY CARD FAVORITE **************/
+
 .favorite_add {
     width: 45px;
     height: 45px;
@@ -359,32 +390,61 @@
     background-size: cover;
 }
 
-.hobby_card_bottom {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: flex-start;
-    gap: 10%;
-    padding: 0 5% 0 5%;
+.tooltip {
+    position: relative;
+    display: inline-block;
 }
 
-.hobby_card_bottom_button {
-    width: 120px;
-    height: 35px;
-    background: #FFFFFF;
-    border-radius: 10px;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+.tooltip .tooltiptext {
+    visibility: hidden;
 
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 19px;
+    position: absolute;
+    z-index: 1;
+    bottom: 109%;
+    left: 50%;
 
-    display: flex;
-    align-items: center;
+    width: 200px;
+    background-color: #344356;
+    color: #FFF;
     text-align: center;
-    justify-content: center;
 
-    color: #000000;
+    border: 4px solid #FFD066;
+    border-radius: 10px;
+    padding: 7px 5px;
+    margin-left: -114px;
 }
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+
+    margin-left: -5px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: #FFD066 transparent transparent transparent;
+}
+
+/*.tooltip:hover .tooltiptext {
+    visibility: visible;
+}*/
+
+.tooltiptext>a {
+    color: #FFD066;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: bolder;
+}
+
+.tooltiptext>a:hover {
+    color: #DDE8C8;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+
+/************** HOBBY RESULTS MAP **************/
 
 .map {
     height: 500px;

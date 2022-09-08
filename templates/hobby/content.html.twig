@@ -99,39 +99,52 @@
                                     </div>
                                 </div>
 
-                                {% set isFavorite = false %}
+                                {% if app.user %}
 
-                                {% for favorite in app.user.hobbies %}
-                                    {% if hobby == favorite %}
-                                        {% set isFavorite = true %}
+                                    {% set isFavorite = false %}
+
+                                    {% for favorite in app.user.hobbies %}
+                                        {% if hobby == favorite %}
+                                            {% set isFavorite = true %}
+                                        {% endif %}
+                                    {% endfor %}
+
+                                    {% if isFavorite == true %}
+                                        <form   action="{{ path('app_removeFavorite', { hobbyId: hobby.id }) }}"
+                                                method="POST"
+                                                {{ stimulus_controller('favorites') }}
+                                                data-action="submit-confirm#onSubmit"
+                                        >
+
+                                            <div class="favorite_remove"
+                                                    {{ stimulus_target('favorites', 'icon') }}
+                                                    {{ stimulus_action('favorites', 'manageFavorite', 'click') }}>
+                                            </div>
+                                        </form>
+                                    {% elseif isFavorite == false %}
+                                        <form   action="{{ path('app_addFavorite', { hobbyId: hobby.id }) }}"
+                                                method="POST"
+                                                {{ stimulus_controller('favorites') }}>
+                                            <div class="favorite_add"
+                                                    {{ stimulus_target('favorites', 'icon') }}
+                                                    {{ stimulus_action('favorites', 'manageFavorite', 'click') }}>
+                                            </div>
+                                        </form>
+                                    {% else %}
+                                            weird
                                     {% endif %}
-                                {% endfor %}
 
-
-
-                                {% if isFavorite == true %}
-                                    <form   action="{{ path('app_removeFavorite', { hobbyId: hobby.id }) }}"
-                                            method="POST"
-                                            {{ stimulus_controller('favorites') }}>
-                                        <div class="favorite_remove"
-                                                {{ stimulus_target('favorites', 'icon') }}
-                                                {{ stimulus_action('favorites', 'manageFavorite', 'click') }}>
-                                        </div>
-                                    </form>
-                                {% elseif isFavorite == false %}
-                                    <form   action="{{ path('app_addFavorite', { hobbyId: hobby.id }) }}"
-                                            method="POST"
-                                            {{ stimulus_controller('favorites') }}>
-                                        <div class="favorite_add"
-                                                {{ stimulus_target('favorites', 'icon') }}
-                                                {{ stimulus_action('favorites', 'manageFavorite', 'click') }}>
-                                        </div>
-                                    </form>
                                 {% else %}
-                                        weird
+                                    <div class="tooltip" {{ stimulus_controller('favorites') }}>
+                                        <div class="favorite_add"
+                                                {{ stimulus_action('favorites', 'notConnected', 'click') }}>
+                                        </div>
+                                        <span class="tooltiptext" {{ stimulus_target('favorites', 'tooltip') }}><a href="{{ path('app_login') }}">Log in</a><br/> to add it to your favorites!</span>
+                                    </div>
                                 {% endif %}
                             </div>
                         </div>
+
                         <div class="hobby_card_bottom">
                             <div class="hobby_card_bottom_button">
                                 See more
