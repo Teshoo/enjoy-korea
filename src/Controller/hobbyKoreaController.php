@@ -37,11 +37,18 @@ class hobbyKoreaController extends AbstractController
     public function hobbies(Environment $twig, HobbyCategoryRepository $hobbyCategoryRepository, HobbyFamilyRepository $hobbyFamilyRepository, string $category_name): Response
     {
         $hobbyCategory = $hobbyCategoryRepository->findOneByName($category_name);
+        $hobbies = $hobbyCategory->getHobbies();
+
+        $latlong = [];
+        foreach ($hobbies as $hobby) {
+            $latlong[] = $hobby->getGpsCoordinates();
+        }
 
          return new Response($twig->render('hobby/content.html.twig', [
             'selected_category' => $category_name,
             'hobby_families' => $hobbyFamilyRepository->findAll(),
             'hobbies' => $hobbyCategory->getHobbies(),
+            'coordinates' => $latlong,
         ]));
     }
 }

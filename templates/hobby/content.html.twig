@@ -42,123 +42,131 @@
                 </div>
             {% endif %}
         {% endfor %}
-
         <div class="hobbies_results">
-            <div class="map" data-controller="map" data-map-target="map"></div>
-            {% for hobby in hobbies %}
-                <div class="hobby_card_background">
-                    <div class="hobby_card">
-                        <div class="hobby_card_top">
-                            <div class="hobby_card_top_left">
-                                <div class="hobby_card_titles">
-                                    <div class="hobby_card_title">
-                                        {{ hobby.name }}
-                                    </div>
-                                    <div class="hobby_card_hangeul">
-                                        {{ hobby.hangeulName }}
-                                    </div>
-                                </div>
-                                <div class="hobby_card_phone">
-                                    {{ hobby.phoneNb }}
-                                </div>
-                            </div>
-                            <!-- additional information generated through database -->
-                            <div class="hobby_card_top_right">
-                                <div class="hobby_card_add_info">
-                                    <div class="hobby_card_add_info_button">
-                                        Rackets provided
-                                    </div>
-                                    <div class="hobby_card_add_info_button">
-                                        Individual training
-                                    </div>
-                                </div>
-                                <div class="hobby_card_basic_info">
-                                    <div class="hobby_card_basic_info_button">
-                                        <div class="hobby_card_basic_info_button_main_text">
-                                            10:30 - 22:30
-                                        </div>
-                                        <div class="hobby_card_basic_info_button_sub_text">
-                                            everyday
-                                        </div>
-                                    </div>
-                                    <div class="hobby_card_basic_info_button">
-                                        <div class="hobby_card_basic_info_button_main_text">
-                                            5000 wons
-                                        </div>
-                                        <div class="hobby_card_basic_info_button_sub_text">
-                                            for 1 hour
-                                        </div>
-                                    </div>
-                                    <div class="hobby_card_basic_info_button">
-                                        <div class="hobby_card_basic_info_button_main_text">
-                                            0.5 kms
-                                        </div>
-                                        <div class="hobby_card_basic_info_button_sub_text">
-                                            10 min walk
-                                        </div>
-                                    </div>
-                                </div>
 
-                                {% if app.user %}
 
-                                    {% set isFavorite = false %}
+                <div class="map"
+                    {{ stimulus_controller('map', {
+                        latlong: coordinates,
+                    }) }}
+                    {{ stimulus_target('map', 'map') }}>
+                </div>
 
-                                    {% for favorite in app.user.hobbies %}
-                                        {% if hobby == favorite %}
-                                            {% set isFavorite = true %}
+                {% for hobby in hobbies %}
+                    <div class="hobby_card_background" >
+                        <div class="hobby_card">
+                            <div class="hobby_card_top">
+                                <div class="hobby_card_top_left">
+                                    <div class="hobby_card_titles">
+                                        <div class="hobby_card_title">
+                                            {{ hobby.name }}
+                                        </div>
+                                        <div class="hobby_card_hangeul">
+                                            {{ hobby.hangeulName }}
+                                        </div>
+                                    </div>
+                                    <div class="hobby_card_phone">
+                                        {{ hobby.phoneNb }}
+                                    </div>
+                                </div>
+                                <!-- additional information generated through database -->
+                                <div class="hobby_card_top_right">
+                                    <div class="hobby_card_add_info">
+                                        <div class="hobby_card_add_info_button">
+                                            Rackets provided
+                                        </div>
+                                        <div class="hobby_card_add_info_button">
+                                            Individual training
+                                        </div>
+                                    </div>
+                                    <div class="hobby_card_basic_info">
+                                        <div class="hobby_card_basic_info_button">
+                                            <div class="hobby_card_basic_info_button_main_text">
+                                                10:30 - 22:30
+                                            </div>
+                                            <div class="hobby_card_basic_info_button_sub_text">
+                                                everyday
+                                            </div>
+                                        </div>
+                                        <div class="hobby_card_basic_info_button">
+                                            <div class="hobby_card_basic_info_button_main_text">
+                                                5000 wons
+                                            </div>
+                                            <div class="hobby_card_basic_info_button_sub_text">
+                                                for 1 hour
+                                            </div>
+                                        </div>
+                                        <div class="hobby_card_basic_info_button">
+                                            <div class="hobby_card_basic_info_button_main_text">
+                                                0.5 kms
+                                            </div>
+                                            <div class="hobby_card_basic_info_button_sub_text">
+                                                10 min walk
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {% if app.user %}
+
+                                        {% set isFavorite = false %}
+
+                                        {% for favorite in app.user.hobbies %}
+                                            {% if hobby == favorite %}
+                                                {% set isFavorite = true %}
+                                            {% endif %}
+                                        {% endfor %}
+
+                                        {% if isFavorite == true %}
+                                            <form   action="{{ path('app_removeFavorite', { hobbyId: hobby.id }) }}"
+                                                    method="POST"
+                                                    {{ stimulus_controller('favorites') }}
+                                                    data-action="submit-confirm#onSubmit"
+                                            >
+
+                                                <div class="favorite_remove"
+                                                        {{ stimulus_target('favorites', 'icon') }}
+                                                        {{ stimulus_action('favorites', 'manageFavorite', 'click') }}>
+                                                </div>
+                                            </form>
+                                        {% elseif isFavorite == false %}
+                                            <form   action="{{ path('app_addFavorite', { hobbyId: hobby.id }) }}"
+                                                    method="POST"
+                                                    {{ stimulus_controller('favorites') }}>
+                                                <div class="favorite_add"
+                                                        {{ stimulus_target('favorites', 'icon') }}
+                                                        {{ stimulus_action('favorites', 'manageFavorite', 'click') }}>
+                                                </div>
+                                            </form>
+                                        {% else %}
+                                                weird
                                         {% endif %}
-                                    {% endfor %}
 
-                                    {% if isFavorite == true %}
-                                        <form   action="{{ path('app_removeFavorite', { hobbyId: hobby.id }) }}"
-                                                method="POST"
-                                                {{ stimulus_controller('favorites') }}
-                                                data-action="submit-confirm#onSubmit"
-                                        >
-
-                                            <div class="favorite_remove"
-                                                    {{ stimulus_target('favorites', 'icon') }}
-                                                    {{ stimulus_action('favorites', 'manageFavorite', 'click') }}>
-                                            </div>
-                                        </form>
-                                    {% elseif isFavorite == false %}
-                                        <form   action="{{ path('app_addFavorite', { hobbyId: hobby.id }) }}"
-                                                method="POST"
-                                                {{ stimulus_controller('favorites') }}>
-                                            <div class="favorite_add"
-                                                    {{ stimulus_target('favorites', 'icon') }}
-                                                    {{ stimulus_action('favorites', 'manageFavorite', 'click') }}>
-                                            </div>
-                                        </form>
                                     {% else %}
-                                            weird
-                                    {% endif %}
-
-                                {% else %}
-                                    <div class="tooltip" {{ stimulus_controller('favorites') }}>
-                                        <div class="favorite_add"
-                                                {{ stimulus_action('favorites', 'notConnected', 'click') }}>
+                                        <div class="tooltip" {{ stimulus_controller('favorites') }}>
+                                            <div class="favorite_add"
+                                                    {{ stimulus_action('favorites', 'notConnected', 'click') }}>
+                                            </div>
+                                            <span class="tooltiptext" {{ stimulus_target('favorites', 'tooltip') }}><a href="{{ path('app_login') }}">Log in</a><br/> to add it to your favorites!</span>
                                         </div>
-                                        <span class="tooltiptext" {{ stimulus_target('favorites', 'tooltip') }}><a href="{{ path('app_login') }}">Log in</a><br/> to add it to your favorites!</span>
-                                    </div>
-                                {% endif %}
+                                    {% endif %}
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="hobby_card_bottom">
-                            <div class="hobby_card_bottom_button">
-                                See more
-                            </div>
-                            <div class="hobby_card_bottom_button">
-                                Visit website
-                            </div>
-                            <div class="hobby_card_bottom_button">
-                                Ask for support
+                            <div class="hobby_card_bottom">
+                                <div class="hobby_card_bottom_button">
+                                    See more
+                                </div>
+                                <div class="hobby_card_bottom_button">
+                                    Visit website
+                                </div>
+                                <div class="hobby_card_bottom_button">
+                                    Ask for support
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
+
         </div>
     </div>
     {% endif %}

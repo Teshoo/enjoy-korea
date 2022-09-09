@@ -10,7 +10,6 @@ export default class extends Controller {
         if (this.iconTarget.classList.contains('favorite_add')) {
             this.iconTarget.classList.replace('favorite_add', 'favorite_remove');
             console.log('Hobby added in your favorites!');
-            fla
         }
         else if (this.iconTarget.classList.contains('favorite_remove')) {
             this.iconTarget.classList.replace('favorite_remove', 'favorite_add');

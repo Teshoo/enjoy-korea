@@ -3,15 +3,24 @@ import leaflet from 'leaflet';
 
 export default class extends Controller {
     static targets = ['map'];
+    static values = {
+        latlong: Array,
+    }
 
     connect() {
-        let map = L.map(this.mapTarget, {
+
+        console.log("test");
+        console.log(this.latlongValue);
+        console.log(this.latlongValue.length);
+        console.log(this.latlongValue[2]);
+
+         let map = L.map(this.mapTarget, {
             closePopupOnClick: false,
             scrollWheelZoom: false,
             minZoom: 10,
             maxZoom: 18,
         })
-            .setView([37.558629, -233.073449], 16);
+            .setView([37.558629, -233.073449], 15);
 
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
@@ -30,5 +39,23 @@ export default class extends Controller {
             .setContent("text")
             .openOn(map)
 
+        for (let i = 0; i < this.latlongValue.length; i++) {
+            if (this.latlongValue[i] != null) {
+                let latlong = this.latlongValue[i].split(",")
+                console.log(latlong)
+
+                let popup = L.popup({
+                    autoClose: false,
+                    closeOnEscapeKey: false,
+                    closeOnClick: false,
+                    closeButton: false,
+                    className: 'marker',
+                    maxWidth: 400
+                })
+                    .setLatLng([latlong[0],latlong[1]])
+                    .setContent("Sincheon")
+                    .openOn(map)
+            }
+        }
     }
 }
