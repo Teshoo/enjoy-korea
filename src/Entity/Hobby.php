@@ -30,16 +30,35 @@ class Hobby
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $gps_coordinates = null;
 
-    #[ORM\ManyToMany(targetEntity: HobbyCategory::class, mappedBy: 'hobbies')]
+    #[ORM\ManyToMany(targetEntity: HobbyCategory::class, inversedBy: 'hobbies')]
     private Collection $hobbyCategories;
 
     #[ORM\ManyToMany(targetEntity: Users::class, mappedBy: 'hobbies')]
     private Collection $users;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $schedule = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $frequence = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $price = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $priceFor = null;
+
+    #[ORM\OneToMany(mappedBy: 'hobby', targetEntity: HobbyAdditionalInfo::class)]
+    private Collection $additionalInfo;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $adress = null;
+
     public function __construct()
     {
         $this->hobbyCategories = new ArrayCollection();
         $this->users = new ArrayCollection();
+        $this->additionalInfo = new ArrayCollection();
     }
 
     public function __toString(): string
@@ -162,6 +181,96 @@ class Hobby
         if ($this->users->removeElement($user)) {
             $user->removeHobby($this);
         }
+
+        return $this;
+    }
+
+    public function getSchedule(): ?string
+    {
+        return $this->schedule;
+    }
+
+    public function setSchedule(string $schedule): self
+    {
+        $this->schedule = $schedule;
+
+        return $this;
+    }
+
+    public function getFrequence(): ?string
+    {
+        return $this->frequence;
+    }
+
+    public function setFrequence(string $frequence): self
+    {
+        $this->frequence = $frequence;
+
+        return $this;
+    }
+
+    public function getPrice(): ?int
+    {
+        return $this->price;
+    }
+
+    public function setPrice(int $price): self
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    public function getPriceFor(): ?string
+    {
+        return $this->priceFor;
+    }
+
+    public function setPriceFor(string $priceFor): self
+    {
+        $this->priceFor = $priceFor;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, HobbyAdditionalInfo>
+     */
+    public function getAdditionalInfo(): Collection
+    {
+        return $this->additionalInfo;
+    }
+
+    public function addAdditionalInfo(HobbyAdditionalInfo $additionalInfo): self
+    {
+        if (!$this->additionalInfo->contains($additionalInfo)) {
+            $this->additionalInfo->add($additionalInfo);
+            $additionalInfo->setHobby($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAdditionalInfo(HobbyAdditionalInfo $additionalInfo): self
+    {
+        if ($this->additionalInfo->removeElement($additionalInfo)) {
+            // set the owning side to null (unless already changed)
+            if ($additionalInfo->getHobby() === $this) {
+                $additionalInfo->setHobby(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getAdress(): ?string
+    {
+        return $this->adress;
+    }
+
+    public function setAdress(?string $adress): self
+    {
+        $this->adress = $adress;
 
         return $this;
     }

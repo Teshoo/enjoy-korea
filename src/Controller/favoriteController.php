@@ -24,13 +24,13 @@ class favoriteController extends AbstractController
     }
 
     #[Route('/hobby/{hobbyId}/add', name: 'app_addFavorite', methods: 'POST')]
-    public function addFavorite(Environment $twig, Request $request, ManagerRegistry $doctrine, Hobby $hobbyId): Response
+    public function addFavorite(Environment $twig, Request $request, ManagerRegistry $doctrine, Hobby $hobbyId): RedirectResponse
     {
         $entityManager = $doctrine->getManager();
         $this->getUser()->addHobby($hobbyId);
         $entityManager->flush();
 
-        return $this->json(['test' => 200]);
+        return $this->redirectToRoute('app_favorites');
     }
 
     #[Route('/hobby/{hobbyId}/remove', name: 'app_removeFavorite', methods: 'POST')]

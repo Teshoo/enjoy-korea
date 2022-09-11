@@ -3,7 +3,6 @@
 namespace App\Repository;
 
 use App\Entity\Hobby;
-use App\Entity\HobbyCategory;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 

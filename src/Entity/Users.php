@@ -38,6 +38,9 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToMany(targetEntity: hobby::class, inversedBy: 'users')]
     private Collection $hobbies;
 
+    #[ORM\Column(length: 255)]
+    private ?string $username = null;
+
     public function __construct()
     {
         $this->hobbies = new ArrayCollection();
@@ -145,6 +148,18 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     public function removeHobby(hobby $hobby): self
     {
         $this->hobbies->removeElement($hobby);
+
+        return $this;
+    }
+
+    public function getUsername(): ?string
+    {
+        return $this->username;
+    }
+
+    public function setUsername(string $username): self
+    {
+        $this->username = $username;
 
         return $this;
     }

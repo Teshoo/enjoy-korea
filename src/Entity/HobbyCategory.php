@@ -18,11 +18,11 @@ class HobbyCategory
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\ManyToMany(targetEntity: Hobby::class, inversedBy: 'hobbyCategories')]
+    #[ORM\ManyToMany(targetEntity: Hobby::class, mappedBy: 'hobbyCategories')]
     private Collection $hobbies;
 
     #[ORM\ManyToOne(inversedBy: 'hobbyCategories')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?HobbyFamily $hobbyFamilies = null;
 
     public function __construct()
