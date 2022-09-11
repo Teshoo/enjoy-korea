@@ -40,7 +40,7 @@ class Hobby
     private ?string $schedule = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $frequence = null;
+    private ?string $frequency = null;
 
     #[ORM\Column(nullable: true)]
     private ?int $price = null;
@@ -48,11 +48,11 @@ class Hobby
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $priceFor = null;
 
-    #[ORM\OneToMany(mappedBy: 'hobby', targetEntity: HobbyAdditionalInfo::class)]
+    #[ORM\OneToMany(mappedBy: 'hobby', targetEntity: HobbyAdditionalInfo::class, cascade: ["persist"])]
     private Collection $additionalInfo;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $adress = null;
+    private ?string $address = null;
 
     public function __construct()
     {
@@ -197,14 +197,14 @@ class Hobby
         return $this;
     }
 
-    public function getFrequence(): ?string
+    public function getFrequency(): ?string
     {
-        return $this->frequence;
+        return $this->frequency;
     }
 
-    public function setFrequence(string $frequence): self
+    public function setFrequency(string $frequency): self
     {
-        $this->frequence = $frequence;
+        $this->frequency = $frequency;
 
         return $this;
     }
@@ -263,14 +263,14 @@ class Hobby
         return $this;
     }
 
-    public function getAdress(): ?string
+    public function getAddress(): ?string
     {
-        return $this->adress;
+        return $this->address;
     }
 
-    public function setAdress(?string $adress): self
+    public function setAddress(?string $address): self
     {
-        $this->adress = $adress;
+        $this->address = $address;
 
         return $this;
     }

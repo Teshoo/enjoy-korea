@@ -19,6 +19,11 @@ class HobbyAdditionalInfo
     #[ORM\ManyToOne(inversedBy: 'additionalInfo')]
     private ?Hobby $hobby = null;
 
+    public function __toString(): string
+    {
+        return $this->info;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

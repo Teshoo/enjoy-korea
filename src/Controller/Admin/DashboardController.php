@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Hobby;
+use App\Entity\HobbyAdditionalInfo;
 use App\Entity\HobbyCategory;
 use App\Entity\HobbyFamily;
 use App\Entity\Users;
@@ -50,9 +51,10 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToRoute('Back to Enjoy Korea', 'fas fa-home', 'app_enjoyKorea');
-        yield MenuItem::linkToCrud('Hobbies', 'fas fa-list', Hobby::class);
-        yield MenuItem::linkToCrud('Hobbies Categories', 'fas fa-list', HobbyCategory::class);
-        yield MenuItem::linkToCrud('Hobbies Family', 'fa-solid fa-broom-ball', HobbyFamily::class);
         yield MenuItem::linkToCrud('Users', 'fa-solid fa-user', Users::class);
+        yield MenuItem::linkToCrud('Hobby Families', 'fa-solid fa-broom-ball', HobbyFamily::class);
+        yield MenuItem::linkToCrud('Hobby Categories', 'fas fa-list', HobbyCategory::class);
+        yield MenuItem::linkToCrud('Hobbies', 'fas fa-list', Hobby::class);
+        yield MenuItem::linkToCrud('Hobby Additional Info', 'fas fa-list', HobbyAdditionalInfo::class);
     }
 }
