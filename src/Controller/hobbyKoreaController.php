@@ -41,7 +41,7 @@ class hobbyKoreaController extends AbstractController
 
         $latlong = [];
         foreach ($hobbies as $hobby) {
-            $latlong[] = $hobby->getGpsCoordinates();
+            $latlong[] = [$hobby->getName(), $hobby->getGpsCoordinates()];
         }
 
          return new Response($twig->render('hobby/content.html.twig', [

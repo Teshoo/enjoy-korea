@@ -20,7 +20,7 @@ export default class extends Controller {
             minZoom: 10,
             maxZoom: 18,
         })
-            .setView([37.558629, -233.073449], 15);
+            .setView([37.558629, -233.073449], 14);
 
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
@@ -36,13 +36,14 @@ export default class extends Controller {
             maxWidth: 400
         })
             .setLatLng([37.558629, -233.073449])
-            .setContent("text")
+            .setContent("You are here")
             .openOn(map)
 
         for (let i = 0; i < this.latlongValue.length; i++) {
-            if (this.latlongValue[i] != null) {
-                let latlong = this.latlongValue[i].split(",")
-                console.log(latlong)
+            if (this.latlongValue[i][1] != null) {
+                let hobbyLatlong = this.latlongValue[i][1].split(",")
+                let hobbyName = this.latlongValue[i][0]
+                console.log(hobbyLatlong)
 
                 let popup = L.popup({
                     autoClose: false,
@@ -52,8 +53,8 @@ export default class extends Controller {
                     className: 'marker',
                     maxWidth: 400
                 })
-                    .setLatLng([latlong[0],latlong[1]])
-                    .setContent("Sincheon")
+                    .setLatLng([hobbyLatlong[0],hobbyLatlong[1]])
+                    .setContent(hobbyName)
                     .openOn(map)
             }
         }
