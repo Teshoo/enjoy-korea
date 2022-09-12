@@ -48,7 +48,7 @@ class Hobby
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $priceFor = null;
 
-    #[ORM\OneToMany(mappedBy: 'hobby', targetEntity: HobbyAdditionalInfo::class, cascade: ["persist"])]
+    #[ORM\OneToMany(mappedBy: 'hobby', targetEntity: HobbyAdditionalInfo::class, cascade: ["persist"], orphanRemoval: true)]
     private Collection $additionalInfo;
 
     #[ORM\Column(length: 255, nullable: true)]

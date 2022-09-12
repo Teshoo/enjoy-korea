@@ -1,0 +1,121 @@
+<div class="hobby_card_background" >
+    <div class="hobby_card">
+        <div class="hobby_card_top">
+            <div class="hobby_card_top_left">
+                <div class="hobby_card_titles">
+                    <div class="hobby_card_title">
+                        {{ hobby.name }}
+                    </div>
+                    <div class="hobby_card_hangeul">
+                        {{ hobby.hangeulName }}
+                    </div>
+                </div>
+                <div class="hobby_card_phone">
+                    <i class="fa fa-phone"></i> {{ hobby.phoneNb }}
+                </div>
+            </div>
+            <!-- additional information generated through database -->
+            <div class="hobby_card_top_right">
+                <div class="hobby_card_add_info">
+                    {% for additional_info in hobby.additionalInfo %}
+                        <div class="hobby_card_add_info_button">
+                            {{ additional_info }}
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="hobby_card_basic_info">
+                    {% if hobby.schedule %}
+                        <div class="hobby_card_basic_info_button">
+                            <div class="hobby_card_basic_info_button_main_text">
+                                {{ hobby.schedule }}
+                            </div>
+                            <div class="hobby_card_basic_info_button_sub_text">
+                                {{ hobby.frequency }}
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% if hobby.price %}
+                        <div class="hobby_card_basic_info_button">
+                            <div class="hobby_card_basic_info_button_main_text">
+                                {{ hobby.price|format_currency('KRW') }}
+                            </div>
+                            <div class="hobby_card_basic_info_button_sub_text">
+                                {{ hobby.priceFor }}
+                            </div>
+                        </div>
+                    {% endif %}
+                    <div class="hobby_card_basic_info_button">
+                        <div class="hobby_card_basic_info_button_main_text">
+                            0.5 kms
+                        </div>
+                        <div class="hobby_card_basic_info_button_sub_text">
+                            10 min walk
+                        </div>
+                    </div>
+                </div>
+
+                {% if app.user %}
+
+                    {% set isFavorite = false %}
+
+                    {% for favorite in app.user.hobbies %}
+                        {% if hobby == favorite %}
+                            {% set isFavorite = true %}
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if isFavorite == true %}
+                        <form   action="{{ path('app_removeFavorite', { hobbyId: hobby.id }) }}"
+                                method="POST"
+                                {{ stimulus_controller('favorites') }}
+                                data-action="submit-confirm#onSubmit"
+                        >
+
+                            <div class="favorite_remove"
+                                    {{ stimulus_target('favorites', 'icon') }}
+                                    {{ stimulus_action('favorites', 'manageFavorite', 'click') }}>
+                            </div>
+                        </form>
+                    {% elseif isFavorite == false %}
+                        <form   action="{{ path('app_addFavorite', { hobbyId: hobby.id }) }}"
+                                method="POST"
+                                {{ stimulus_controller('favorites') }}>
+                            <div class="favorite_add"
+                                    {{ stimulus_target('favorites', 'icon') }}
+                                    {{ stimulus_action('favorites', 'manageFavorite', 'click') }}>
+                            </div>
+                        </form>
+                    {% else %}
+                        weird
+                    {% endif %}
+
+                {% else %}
+                    <div class="tooltip" {{ stimulus_controller('favorites') }}>
+                        <div class="favorite_add"
+                                {{ stimulus_action('favorites', 'notConnected', 'click') }}>
+                        </div>
+                        <span class="tooltiptext" {{ stimulus_target('favorites', 'tooltip') }}><a href="{{ path('app_login') }}">Log in</a><br/> to add it to your favorites!</span>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="hobby_card_bottom">
+            <a href="#" class="hobby_card_bottom_button">
+                See more
+            </a>
+            {% if hobby.website %}
+                <a href="{{ hobby.website }}" target="_blank" class="hobby_card_bottom_button">
+                    Visit website <i class="fa fa-external-link hobby_card_bottom_button_extlink_icon" aria-hidden="true"></i>
+                </a>
+            {% else %}
+                <a class="hobby_card_bottom_button_nolink">
+                    Visit website <i class="fa fa-external-link hobby_card_bottom_button_extlink_icon" aria-hidden="true"></i>
+                </a>
+            {% endif %}
+            <a href="#" class="hobby_card_bottom_button">
+                Ask for support
+            </a>
+        </div>
+    </div>
+</div>

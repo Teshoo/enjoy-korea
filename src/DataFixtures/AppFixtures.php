@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Hobby;
+use App\Entity\HobbyAdditionalInfo;
 use App\Entity\HobbyCategory;
 use App\Entity\HobbyFamily;
 use App\Entity\Users;
@@ -155,18 +156,23 @@ class AppFixtures extends Fixture
 
         /* Hobby fixtures */
 
+        $additionnalInfo1 = new HobbyAdditionalInfo();
+        $additionnalInfo2 = new HobbyAdditionalInfo();
+
         $hobby = new Hobby();
         $hobby->setName('Sincheon Table Tennis');
         $hobby->setHangeulName('신촌탁구');
         $hobby->setPhoneNb('02-714-0505');
         $hobby->setWebsite('');
-        $hobby->setGpsCoordinates('37.555537, 126.93912');
-        $hobby->setAdress('서울 마포구 신촌로 118-1');
+        $hobby->setGpsCoordinates('37.555552, -233.060891');
+        $hobby->setAddress('서울 마포구 신촌로 118-1');
         $hobby->setSchedule('8:00 - 23:00');
-        $hobby->setFrequence('Everyday');
+        $hobby->setFrequency('Everyday');
         $hobby->setPrice(15000);
         $hobby->setPriceFor('1 table 1 hour');
         $hobby->addHobbyCategory($this->getReference( 'table-tennis'));
+        $hobby->addAdditionalInfo($additionnalInfo1->setInfo('Rackets provided'));
+        $hobby->addAdditionalInfo($additionnalInfo2->setInfo('Individual training'));
         $manager->persist($hobby);
 
         $hobby = new Hobby();
@@ -175,9 +181,9 @@ class AppFixtures extends Fixture
         $hobby->setPhoneNb('02-703-6476');
         $hobby->setWebsite('https://cafe.daum.net/mapotak');
         $hobby->setGpsCoordinates('37.54667, -233.065534');
-        $hobby->setAdress('서울 마포구 신촌로 118-1');
+        $hobby->setAddress('서울 마포구 신촌로 118-1');
         $hobby->setSchedule('13:00 - 23:00');
-        $hobby->setFrequence('Monday - Friday');
+        $hobby->setFrequency('Monday - Friday');
         $hobby->setPrice(80000);
         $hobby->setPriceFor('per month');
         $hobby->addHobbyCategory($this->getReference( 'table-tennis'));
@@ -189,9 +195,9 @@ class AppFixtures extends Fixture
         $hobby->setPhoneNb('02-3144-8749');
         $hobby->setWebsite('');
         $hobby->setGpsCoordinates('37.557732, -233.092571');
-        $hobby->setAdress('서울 마포구 망원로 96');
+        $hobby->setAddress('서울 마포구 망원로 96');
         $hobby->setSchedule('');
-        $hobby->setFrequence('');
+        $hobby->setFrequency('');
         //$hobby->setPrice(null);
         $hobby->setPriceFor('');
         $hobby->addHobbyCategory($this->getReference( 'table-tennis'));
@@ -203,9 +209,9 @@ class AppFixtures extends Fixture
         $hobby->setPhoneNb('02-3143-3337');
         $hobby->setWebsite('');
         $hobby->setGpsCoordinates('37.549537, -233.080584');
-        $hobby->setAdress('서울 마포구 망원로 96');
+        $hobby->setAddress('서울 마포구 망원로 96');
         $hobby->setSchedule('12:00 - 22:30');
-        $hobby->setFrequence('Everyday');
+        $hobby->setFrequency('Everyday');
         $hobby->setPrice(70000);
         $hobby->setPriceFor('per month');
         $hobby->addHobbyCategory($this->getReference( 'table-tennis'));
