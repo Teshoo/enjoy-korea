@@ -156,8 +156,8 @@ class AppFixtures extends Fixture
 
         /* Hobby fixtures */
 
-        $additionnalInfo1 = new HobbyAdditionalInfo();
-        $additionnalInfo2 = new HobbyAdditionalInfo();
+        $additionalInfo1 = new HobbyAdditionalInfo();
+        $additionalInfo2 = new HobbyAdditionalInfo();
 
         $hobby = new Hobby();
         $hobby->setName('Sincheon Table Tennis');
@@ -171,8 +171,8 @@ class AppFixtures extends Fixture
         $hobby->setPrice(15000);
         $hobby->setPriceFor('1 table 1 hour');
         $hobby->addHobbyCategory($this->getReference( 'table-tennis'));
-        $hobby->addAdditionalInfo($additionnalInfo1->setInfo('Rackets provided'));
-        $hobby->addAdditionalInfo($additionnalInfo2->setInfo('Individual training'));
+        $hobby->addAdditionalInfo($additionalInfo1->setInfo('Rackets provided'));
+        $hobby->addAdditionalInfo($additionalInfo2->setInfo('Individual training'));
         $manager->persist($hobby);
 
         $hobby = new Hobby();

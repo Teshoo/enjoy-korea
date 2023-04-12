@@ -1,4 +1,8 @@
-<div class="hobby_card_background" >
+{% if hobby.imageName %}
+    <div class="hobby_card_background" style="background-image: url('{{ vich_uploader_asset(hobby, 'imageFile') | imagine_filter('hobby_card_background') }}');">
+{% else %}
+    <div class="hobby_card_background">
+{% endif %}
     <div class="hobby_card">
         <div class="hobby_card_top">
             <div class="hobby_card_top_left">
